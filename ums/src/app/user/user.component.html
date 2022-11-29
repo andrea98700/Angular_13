@@ -1,0 +1,21 @@
+<td>{{ user?.nome }}</td>  <!-- ?: nullsafe, se l'oggetto è null, parte dopo non verrà mai eseguita  -->
+<td>{{ user?.cognome }}</td>
+<td>{{ user?.codicefiscale }}</td>
+<td>{{ user?.email }}</td>
+<td>{{ user?.cellulare }}</td>
+<td>{{ user?.provincia }}</td>
+<td>{{ user?.eta }}</td>
+<td>
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary btn-sm" (click)="updateUser()">
+        <fa-icon [icon]="faPencil"></fa-icon>
+      </button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-danger btn-sm" (click)="deleteUser()">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </button>
+    </div>
+  </div>
+</td>

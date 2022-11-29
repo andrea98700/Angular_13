@@ -1,0 +1,2 @@
+ng serve: fa partire il server
+ng new nomeprogetto: crea un nuovo progetto

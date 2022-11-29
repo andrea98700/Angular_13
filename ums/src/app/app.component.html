@@ -1,0 +1,32 @@
+<h1>User management system</h1>
+<a href="#" (click)="newUser()">Nuovo Utente</a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <app-users (updateUser)="updateUser($event)"></app-users>
+    </div>
+    <div class="col-4" *ngIf="showForm">
+      <app-user-detail [user]="userSelected"></app-user-detail>
+    </div>
+  </div>
+</div>
+
+<!-- inizio lezioni 31-32-33-34 / pipes -->
+<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div>
+  <h1>{{ title | uppercase }}</h1>
+
+  <h1>{{ title | titlecase }}</h1>
+
+  {{ 'ANDREA' | lowercase }}
+
+  <p>Io ho {{ 45.50 | currency : 'EUR' }}</p>
+  <p>Io ho {{ 45.50 | currency : 'EUR' : 'code' }}</p>
+  <p>Io ho {{ 45.50 | currency : 'EUR' : 'code' : '4.2-4' }}</p>
+  <p>Io ho {{ 4500.50 | currency : 'EUR' : 'code' : '4.2-4' : 'it-IT' }}</p>
+
+  <p>Sono nato {{ birthDate | date : 'fullDate' : '+1' : 'it-IT' }}</p>
+
+  <p>{{ 'the quick brown fox jumped over the lazy dog' | ucfirst }}</p>
+</div>-->
+<!-- fine lezioni/ pipes -->
