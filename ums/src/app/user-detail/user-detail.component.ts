@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UserClass } from '../classes/userClass';
 import { UserService } from '../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -19,16 +20,23 @@ export class UserDetailComponent implements OnInit {
   get user() {
     return this._user;
   }
-  //userService: UserService;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private route: ActivatedRoute) {
     this.user = new UserClass();
     this._user = new UserClass();
     this.userCopy = new UserClass();
-    //this.userService = userService;
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      param => {
+        const id = Number(param['id']);
+        const user = this.userService.getUser(id);
+        if(user) {
+          this.user = user;
+        }
+      }
+    );
   }
 
   saveUser() {

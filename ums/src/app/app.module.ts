@@ -8,6 +8,7 @@ import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 import { UcfirstPipe } from './ucfirst.pipe';
 import { NavComponent } from './nav/nav.component';
+import { UserDataComponent } from './user-data/user-data.component';
 
 registerLocaleData(localeIt);
 
@@ -15,7 +16,8 @@ registerLocaleData(localeIt);
   declarations: [
     AppComponent,
     UcfirstPipe,
-    NavComponent
+    NavComponent,
+    UserDataComponent
   ],
   imports: [
     BrowserModule,

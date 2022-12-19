@@ -58,8 +58,14 @@ export class UserService {
       eta: 55
     },
   ]
-  getUsers() {
+  getUsers(): UserClass[] {
     return this.users;
+  }
+
+  // riceve un id e ritorna l'utente che è in quella posizione
+  getUser(id: number): UserClass | undefined {
+    // metodo find riceve una funzione che mette una condizione per trovare un elemento dell'array. in questo caso la condizione è l'id dell'array che passiamo
+    return this.users.find(user => user.id === id);
   }
 
   deleteUser(user: UserClass) {
