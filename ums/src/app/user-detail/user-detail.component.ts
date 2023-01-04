@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UserClass } from '../classes/userClass';
 import { UserService } from '../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -21,14 +21,14 @@ export class UserDetailComponent implements OnInit {
     return this._user;
   }
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.user = new UserClass();
     this._user = new UserClass();
     this.userCopy = new UserClass();
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(
+    this.activatedRoute.params.subscribe(
       param => {
         const id = Number(param['id']);
         const user = this.userService.getUser(id);
@@ -44,8 +44,8 @@ export class UserDetailComponent implements OnInit {
       this.userService.updateUser(this.user);
     } else {
       this.userService.createUser(this.user);
-      this.user = new UserClass();
     }
+    this.router.navigate(['users']);
   }
 
   resetForm(form: FormGroup) {

@@ -7,13 +7,19 @@
 <td>{{ user?.eta }}</td>
 <td>
   <div class="row">
-    <div class="col-sm-6">
-      <a class="btn btn-sm btn-primary" [routerLink]="['/users', user?.id, 'edit']">
+    <div class="col-sm-4">
+      <!-- <button class="btn btn-sm btn-secondary" (click)="showUserDetail()"> -->
+      <button class="btn btn-sm btn-outline-info" [routerLink]="['/users', user?.id]"> <!-- questa riga ha lo stesso funzionamento della riga sopra -->
+        <fa-icon [icon]="faInfo"></fa-icon>
+      </button>
+    </div>
+    <div class="col-sm-4">
+      <a class="btn btn-sm btn-outline-primary" [routerLink]="['/users', user?.id, 'edit']">
         <fa-icon [icon]="faPencil"></fa-icon>
       </a>
     </div>
-    <div class="col-sm-6">
-      <button class="btn btn-sm btn-danger" (click)="deleteUser()">
+    <div class="col-sm-4">
+      <button class="btn btn-sm btn-outline-danger" (click)="deleteUser()">
         <fa-icon [icon]="faTrash"></fa-icon>
       </button>
     </div>
