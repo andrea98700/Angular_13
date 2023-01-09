@@ -28,8 +28,15 @@
     <label for="eta">Età</label>
     <input class="form-control" [(ngModel)]="user.eta" type="number" name="eta" id="eta">
   </div>
-  <div class="form-group form-footer">
-    <button class="btn btn-outline-secondary w-50" (click)="resetForm(f.form)">RESETTA</button>
-    <button class="btn btn-success w-50" (click)="saveUser()">SALVA</button>
+  <div class="form-group form-footer row mt-3">
+    <div class="col-md-4">
+      <a class="btn btn-sm btn-primary w-100" [routerLink]="['/users']">TORNA INDIETRO</a>
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-sm btn-danger w-100" (click)="resetForm(f.form)">RESETTA</a>
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-sm btn-success w-100" (click)="saveUser()">SALVA</a>
+    </div>
   </div>
 </form>
