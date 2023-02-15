@@ -66,6 +66,7 @@ export class UserService {
   getUser(id: number): UserClass | undefined {
     // metodo find riceve una funzione che mette una condizione per trovare un elemento dell'array. in questo caso la condizione è l'id dell'array che passiamo
     return this.users.find(user => user.id === id);
+    //return this.http.get<UserClass>(this.apiurl + '/' + id);
   }
 
   deleteUser(user: UserClass) {
@@ -73,6 +74,7 @@ export class UserService {
     if(index > -1) {
       this.users.splice(index, 1)
     }
+    //return this.http.delete<UserClass>(this.apiurl + '/' + user.id);
   }
 
   updateUser(user: UserInterface) {
@@ -80,9 +82,11 @@ export class UserService {
     if(idx !== -1) {
       this.users[idx] = user;
     }
+    //return this.http.put<UserClass>(this.apiurl + '/' + user.id, user);
   }
 
   createUser(user: UserInterface) {
     this.users.splice(0, 0, user);
+    //return this.http.post<UserClass>(this.apiurl, user);
   }
 }

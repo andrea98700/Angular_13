@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users/users.component';
-import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { UserService } from './services/user.service';
 import { UserDataComponent } from './user-data/user-data.component';
+import { RouteGuardService } from './route-guard.service';
+import { LoginComponent } from './login/login.component';
+import { RegistrazioneComponent } from './registrazione/registrazione.component';
 
 const routes: Routes = [
   {
@@ -26,27 +24,26 @@ const routes: Routes = [
   },
   {
     path: 'users/:id/edit',
-    component: UserDetailComponent
+    component: UserDetailComponent,
+    canActivate: [RouteGuardService]
   },
   {
     path: 'users/:id',
     component: UserDataComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'registrazione',
+    component: RegistrazioneComponent
   }
 ];
 
 @NgModule({
-  declarations: [
-    UsersComponent,
-    UserComponent,
-    UserDetailComponent,
-  ],
-  imports: [
-    RouterModule.forRoot(routes),
-    FormsModule,
-    FontAwesomeModule,
-    CommonModule
-  ],
-  exports: [RouterModule],
-  providers: [UserService]
+    exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes)],
+    providers: [RouteGuardService]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,17 @@
+<div *ngIf="nomeItem.valid && nomeItem.touched">
+  <fa-icon class="color-valid-icon" [icon]="faCheck"></fa-icon>
+</div>
+<div *ngIf="nomeItem.dirty && nomeItem.errors">
+  <div class="alert alert-danger" *ngIf="nomeItem.errors.required">
+    <fa-icon class="color-error-icon" [icon]="faXmark"></fa-icon>
+    Il campo {{ nomeItem.name }} è obbligatorio
+  </div>
+  <div class="alert alert-danger" *ngIf="nomeItem.errors.minlength">
+    <fa-icon class="color-error-icon" [icon]="faXmark"></fa-icon>
+    La lunghezza minima del campo {{ nomeItem.name }} è {{ nomeItem.errors.minlength.requiredLength }} caratteri
+  </div>
+  <div class="alert alert-danger" *ngIf="nomeItem.errors.pattern">
+    <fa-icon class="color-error-icon" [icon]="faXmark"></fa-icon>
+    Il campo {{ nomeItem.name }} deve essere valido
+  </div>
+</div>

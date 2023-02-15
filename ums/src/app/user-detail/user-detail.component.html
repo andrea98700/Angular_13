@@ -1,34 +1,56 @@
 <form #f="ngForm">
   <input type="hidden" name="id" [(ngModel)]="user.id">
-  <div class="form-group">
-    <label for="nome">Nome</label>
-    <input class="form-control" [(ngModel)]="user.nome" type="text" name="nome" id="nome">
+  <div class="row mt-4">
+    <div class="form-group col-sm-6">
+      <label for="nome">Nome</label>
+      <input #nome="ngModel" pattern="[a-zA-Z\s]*" required minlength="3" placeholder="Nome" class="form-control" [(ngModel)]="user.nome" type="text" name="nome" id="nome" [ngClass]="(nome.valid && nome.touched) ? 'color-valid-border' : (nome.dirty && nome.errors) ? 'color-error-border' : ''">
+      <app-required-fields [nomeItem]="nome"></app-required-fields>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cognome">Cognome</label>
+      <input #cognome="ngModel" required minlength="3" placeholder="Cognome" class="form-control" [(ngModel)]="user.cognome" type="text" name="cognome" id="cognome" [ngClass]="(cognome.valid && cognome.touched) ? 'color-valid-border' : (cognome.dirty && cognome.errors) ? 'color-error-border' : ''">
+      <app-required-fields [nomeItem]="cognome"></app-required-fields>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="cognome">Cognome</label>
-    <input class="form-control" [(ngModel)]="user.cognome" type="text" name="cognome" id="cognome">
+
+  <div class="row mt-4">
+    <div class="form-group col-sm-6">
+      <label for="codicefiscale">Codice Fiscale</label>
+      <input #codicefiscale="ngModel" pattern="^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$" required minlength="16" placeholder="Codice Fiscale" class="form-control" [(ngModel)]="user.codicefiscale" type="text" name="codicefiscale" id="codicefiscale" [ngClass]="(codicefiscale.valid && codicefiscale.touched) ? 'color-valid-border' : (codicefiscale.dirty && codicefiscale.errors) ? 'color-error-border' : ''">
+      <app-required-fields [nomeItem]="codicefiscale"></app-required-fields>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="email">Email</label>
+      <input #email="ngModel" pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}" required minlength="6" placeholder="Email" class="form-control" [(ngModel)]="user.email" type="email" name="email" id="email" [ngClass]="(email.valid && email.touched) ? 'color-valid-border' : (email.dirty && email.errors) ? 'color-error-border' : ''">
+      <app-required-fields [nomeItem]="email"></app-required-fields>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="codicefiscale">Codice Fiscale</label>
-    <input class="form-control" [(ngModel)]="user.codicefiscale" type="text" name="codicefiscale" id="codicefiscale">
+
+  <div class="row mt-4">
+    <div class="form-group col-sm-6">
+      <label for="cellulare">Cellulare</label>
+      <input #cellulare="ngModel" required placeholder="Cellulare" class="form-control" [(ngModel)]="user.cellulare" type="number" name="cellulare" id="cellulare" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" [ngClass]="(cellulare.valid && cellulare.touched) ? 'color-valid-border' : (cellulare.dirty && cellulare.errors) ? 'color-error-border' : ''">
+      <app-required-fields [nomeItem]="cellulare"></app-required-fields>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="provincia">Provincia</label>
+      <input #provincia="ngModel" required placeholder="Provincia" class="form-control" [(ngModel)]="user.provincia" type="text" name="provincia" id="provincia" [ngClass]="(provincia.valid && provincia.touched) ? 'color-valid-border' : (provincia.dirty && provincia.errors) ? 'color-error-border' : ''">
+      <app-required-fields [nomeItem]="provincia"></app-required-fields>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" [(ngModel)]="user.email" type="email" name="email" id="email">
+
+  <div class="row flex justify-content-center mt-4">
+    <div class="form-group col-sm-6">
+      <label for="eta">Età</label>
+      <input #eta="ngModel" required minlength="2" pattern="[0-9]{2,3}" placeholder="Età" class="form-control" [(ngModel)]="user.eta" type="number" name="eta" id="eta" [ngClass]="(eta.valid && eta.touched) ? 'color-valid-border' : (eta.dirty && eta.errors) ? 'color-error-border' : ''">
+      <app-required-fields [nomeItem]="eta"></app-required-fields>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="cellulare">Cellulare</label>
-    <input class="form-control" [(ngModel)]="user.cellulare" type="tel" name="cellulare" id="cellulare" pattern="[0-9]{3}[0-9]{3}[0-9]{4}">
-  </div>
-  <div class="form-group">
-    <label for="provincia">Provincia</label>
-    <input class="form-control" [(ngModel)]="user.provincia" type="text" name="provincia" id="provincia">
-  </div>
-  <div class="form-group">
-    <label for="eta">Età</label>
-    <input class="form-control" [(ngModel)]="user.eta" type="number" name="eta" id="eta">
-  </div>
-  <div class="form-group form-footer row mt-3">
+
+  <div class="form-group form-footer row mt-5">
     <div class="col-md-4">
       <a class="btn btn-sm btn-primary w-100" [routerLink]="['/users']">TORNA INDIETRO</a>
     </div>
@@ -36,7 +58,7 @@
       <a class="btn btn-sm btn-danger w-100" (click)="resetForm(f.form)">RESETTA</a>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-sm btn-success w-100" (click)="saveUser()">SALVA</a>
+      <button [disabled]="f.invalid" class="btn btn-sm btn-success w-100" (click)="saveUser()">SALVA</button>
     </div>
   </div>
 </form>

@@ -1,0 +1,11 @@
+::placeholder {
+  color: red;
+}
+
+.color-error-border {
+  border-color: red;
+}
+
+.color-valid-border {
+  border-color: rgb(18, 223, 18);
+}

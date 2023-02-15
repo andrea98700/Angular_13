@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserClass } from '../classes/userClass';
 import { UserService } from '../services/user.service';
-import { faInfoCircle, faPencil } from '@fortawesome/free-solid-svg-icons';
-import { faTrashArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faPencil, faTrashArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({

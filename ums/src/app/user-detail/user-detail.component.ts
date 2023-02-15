@@ -50,11 +50,10 @@ export class UserDetailComponent implements OnInit {
 
   resetForm(form: FormGroup) {
     if(this.user.id === 0) {
-      alert('if')
       this.user = new UserClass();
     } else {
-      alert('else: ' + this.user.id)
-      this.user = this.userCopy;
+      this.userCopy = this.user;
+      this.user = new UserClass();
     }
   }
 
