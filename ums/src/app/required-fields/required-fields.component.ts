@@ -16,7 +16,6 @@ export class RequiredFieldsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    debugger;
 
   }
 

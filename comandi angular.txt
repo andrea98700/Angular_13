@@ -1,2 +1,18 @@
 ng serve: fa partire il server
 ng new nomeprogetto: crea un nuovo progetto
+ng g c nomeComponente: crea un nuovo nomeComponente
+
+PROMISE
+Le promise permettono di gesire processi asincroni in modo sincrono. Il valore che restituiscono può essere gestito anche in seguito, ed essendo immutabile non può essere modificato da altri handler.
+var p = new Promise(function(resolve, reject) {
+  if(condition) {
+    resolve(value); // andata a buon fine
+  } else {
+    reject(reason); // 
+  }
+});
+
+Gli stati di una promise possono essere:
+- pending: quando la promise non è stata nè risolta nè rifiutata, cioè che non ha restituito nessun valore
+- fullfilled: viene chiamato il primo metodo
+- rejected: viene chiamato il secondo metodo

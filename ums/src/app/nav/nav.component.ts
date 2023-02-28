@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Event, NavigationEnd  } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserClass } from './../classes/userClass';
 
@@ -12,7 +12,9 @@ export class NavComponent implements OnInit {
 
   @Output() onNewUser = new EventEmitter();
   public isUserLoggedIn = false;
+  public isUserRegistered = false;
   public username: string | undefined;
+  public currentRoute: string = "";
 
   constructor(private auth: AuthService, private router: Router) {
     auth.userSignIn.subscribe(
@@ -25,7 +27,7 @@ export class NavComponent implements OnInit {
     auth.userSignUp.subscribe(
       (user: UserClass) => {
         this.username = user.nome;
-        this.isUserLoggedIn = true;
+        this.isUserRegistered = true;
       }
     );
 
@@ -33,12 +35,25 @@ export class NavComponent implements OnInit {
       () => {
         this.username = '';
         this.isUserLoggedIn = false;
+        this.isUserRegistered = false;
       }
     );
+
+    this.router.events.subscribe((event: Event) => {
+
+      if (event instanceof NavigationEnd) {
+          this.currentRoute = event.url;
+          console.log(event);
+          console.log(this.currentRoute);
+      }
+
+
+    });
   }
 
   ngOnInit(): void {
     this.isUserLoggedIn = this.auth.isUserLoggedIn();
+    this.isUserRegistered = this.auth.isUserRegistered();
   }
 
   newUser() {

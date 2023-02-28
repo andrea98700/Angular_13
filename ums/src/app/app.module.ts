@@ -13,7 +13,7 @@ import { RequiredFieldsComponent } from './required-fields/required-fields.compo
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
@@ -40,6 +40,7 @@ registerLocaleData(localeIt);
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     CommonModule,
     HttpClientModule

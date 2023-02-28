@@ -7,6 +7,7 @@ import { UserClass } from '../classes/userClass';
 export class AuthService {
 
   private isUserLogged = true;
+  private isUserRegister = true;
   @Output() userSignIn = new EventEmitter<UserClass>();
   @Output() userSignUp = new EventEmitter<UserClass>();
   @Output() userSignOut = new EventEmitter();
@@ -18,6 +19,11 @@ export class AuthService {
     return this.isUserLogged;
   }
 
+  isUserRegistered() {
+    this.isUserRegister = !!localStorage.getItem('token');
+    return this.isUserRegister;
+  }
+
   signIn(email: string, password: string) {
     localStorage.setItem('token', email);
     let user = new UserClass();
@@ -27,7 +33,7 @@ export class AuthService {
     return true;
   }
 
-  signUp(email: string, password: string, username: string) {
+  signUp(email: string, password: string, username: string, confermapassword: string) {
     localStorage.setItem('token', email);
     let user = new UserClass();
     user.nome = username;
