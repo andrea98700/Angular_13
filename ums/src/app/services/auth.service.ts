@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor() { }
 
-  isUserLoggedIn() {
+  isUserLoggedIn(): boolean {
     this.isUserLogged = !!localStorage.getItem('token');
     return this.isUserLogged;
   }

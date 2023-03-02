@@ -43,8 +43,6 @@ export class NavComponent implements OnInit {
 
       if (event instanceof NavigationEnd) {
           this.currentRoute = event.url;
-          console.log(event);
-          console.log(this.currentRoute);
       }
 
 

@@ -27,12 +27,14 @@ export class RegistrazioneComponent implements OnInit {
   signUp(form: NgForm) {
     let result = this.auth.signUp(form.value.name, form.value.email, form.value.password, form.value.confermapassword);
     let isSamePassword = this.checkPasswords(form.value.password, form.value.confermapassword);
+    console.log(result);
+    console.log(isSamePassword);
     if(result && isSamePassword) {
       this.router.navigate(['']);
     }
   }
 
-  checkPasswords(password: string, confermapassword: string) {
+  checkPasswords(password: string, confermapassword: string): boolean {
     (password === confermapassword) ? this.isConfirmPasswordDirty = true : this.isConfirmPasswordDirty = false;
     return this.isConfirmPasswordDirty;
   }
